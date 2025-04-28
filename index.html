@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ky Na</title>
+    <meta name="KyNa" content="Music, Sounds">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="KyNa">  
+    <link rel="shortcut icon" href="images/logo.png"> 
+    
+    <!-- FontAwesome CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- p5.js 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script> <!-- p5.js 추가 -->
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg navbar-light mt-3">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="#music">MUSIC</a></li>
+            <li class="nav-item"><a class="nav-link" href="#gallery">GALLERY</a></li>
+            <li class="nav-item"><a class="nav-link" href="#info">INFO</a></li>
+            <li class="nav-item"><a class="nav-link" href="#playlist">PLAYLIST</a></li>
+        </ul>
+    </nav>
+
+    <!-- 메인 콘텐츠 -->
+    <div class="main-wrapper">
+        <!-- MUSIC 섹션 -->
+        <section id="music" class="section fade-in-text">
+            <h1 class="section-title">Music</h1> <!-- portfolio -->
+            <p></p>
+
+            <!-- 사운드 클라우드 오디오 트랙 임베드 -->
+            <figure style="margin-top: 100px;">
+                <iframe width="80%" height="166" scrolling="no" frameborder="no"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com%2Fkyoyupna%2Fkyo-noise-sound-experience&color=%23ff6600&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false"></iframe>
+            </figure>
+        </section>
+
+        <!-- GALLERY 섹션 -->
+        <section id="gallery" class="section fade-in-text"> 
+            <h1 class="section-title">Gallery</h1> <!-- memories? -->
+            <p></p>
+
+            <!-- 이미지 삽입  -->
+            <div class="gallery-image">
+                <img src="/images/warehouse.JPG" alt="Gallery Image">
+            </div>
+        </section>
+
+        <!-- INFO 섹션 -->
+        <section id="info" class="section fade-in-text"> 
+            <h1 class="section-title">Info</h1> <!-- contact info collab? -->
+            <p></p>
+
+            <!-- 인스타그램 아이콘 추가 -->
+            <div class="social-links">
+                <p class="copyright">
+                    <a href="https://www.instagram.com/kyoyup" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i> 
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        <!-- PLAYLIST 섹션 -->
+        <section id="playlist" class="section fade-in-text"> 
+            <h1 class="section-title">Playlist</h1> <!-- mixsets, any good songs of the month, music from friends -->
+            <p></p>  <!-- content goes here later -->
+            
+            <!-- Spotify 플레이리스트 임베드 -->
+            <figure style="margin-bottom: 100px;">
+                <iframe src="https://open.spotify.com/embed/playlist/456elHpdegaMVMS67na2dy?si=0be85c61382b4833" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </figure>
+        </section>
+
+        <!-- ART 섹션 (ABOUT 섹션을 ART로 변경) -->
+        <section id="art" class="section fade-in-text"> <!-- 수정된 부분 -->
+            <h1 class="section-title">ART</h1> <!-- etc -->
+        
+            <p></p>
+
+            <!-- p5.js 스케치 삽입을 위한 div -->
+            <div id="p5sketch"></div>
+
+            <script>
+                let angle = 0;
+                let radius = 150;
+                let points = [];
+
+                // setup 함수에서 createCanvas를 p5sketch div에 맞게 설정
+                function setup() {
+                    let canvas = createCanvas(400, 400, WEBGL);  // 캔버스 크기 설정
+                    canvas.parent('p5sketch');  // 'p5sketch' div 안에 캔버스 넣기
+                    noFill();
+                    stroke(255, 50);
+
+                    // 구 표면에 점들을 미리 생성
+                    for (let i = 0; i < 300; i++) {
+                        let theta = random(TWO_PI);
+                        let phi = random(PI);
+
+                        let x = radius * sin(phi) * cos(theta);
+                        let y = radius * sin(phi) * sin(theta);
+                        let z = radius * cos(phi);
+
+                        points.push(createVector(x, y, z));
+                    }
+                }
+
+                function draw() {
+                    background(0);
+
+                    rotateY(angle);
+
+                    // 점들을 선으로 연결
+                    for (let i = 0; i < points.length; i++) {
+                        let p1 = points[i];
+                        // 몇 개의 가까운 점들과 연결
+                        for (let j = i + 1; j < points.length; j++) {
+                            let p2 = points[j];
+                            let d = p1.dist(p2);
+                            if (d < 50) {  // 거리 기준으로 연결
+                                line(p1.x, p1.y, p1.z, p2.x, p2.y, p2.z);
+                            }
+                        }
+                    }
+
+                    angle += 0.01;
+                }
+            </script>
+        </section>
+    </div>
+    
+    <!-- 푸터 -->
+    <footer class="footer text-center py-4 theme-bg-dark">
+        <div class="footer-links">
+            <p class="footer-text">© Ky Na 2025</p>  <!-- 오른쪽 하단에 배치할 텍스트 -->
+        </div>
+    </footer>
+
+    <!-- 고양이 아이콘 토글 -->
+    <div id="mode-toggle" class="mode-toggle">
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <!-- JavaScript 파일 -->
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

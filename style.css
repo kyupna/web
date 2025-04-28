@@ -1,0 +1,251 @@
+/* 기본 스타일 (밝은 모드) */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;  /* 기본 배경색 흰색 */
+    color: #333;  /* 기본 글자 색상 */
+}
+
+/* 각 섹션 제목 숨기기 */
+.section-title {
+    display: none;  /* 섹션 제목 숨기기 */
+}
+
+/* 모든 텍스트에 페이드 인/아웃 효과 */
+.fade-in-text {
+    opacity: 0;
+    animation: fadeIn 2s forwards;  /* 2초 동안 점차 나타나도록 설정 */
+}
+
+/* 페이드 인 애니메이션 정의 */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* 네비게이션 링크 페이드 인/아웃 효과 */
+.navbar-nav .nav-link {
+    opacity: 0;
+    animation: fadeIn 2s forwards;  /* 2초 동안 서서히 나타나도록 설정 */
+}
+
+/* 기본 섹션 스타일 */
+.section {
+    padding: 60px 20px;  /* 상하 간격을 줄여서 밸런스 있게 조정 */
+    min-height: 100vh; /* 각 섹션을 화면 전체로 채움 */
+    text-align: center;
+    background-color: #f4f4f4;  /* 기본 배경색 */
+    color: black;  /* 기본 텍스트 색상 */
+    margin-bottom: 60px;  /* 섹션 간격 조정 */
+}
+
+.navbar-nav li {
+    margin-right: 20px;
+}
+
+/* 네비게이션 바 오른쪽 고정 */
+.navbar {
+    position: fixed;
+    top: 20px;  /* 화면 상단에서 20px 정도 떨어지게 설정 */
+    right: 20px;  /* 화면 오른쪽에 20px 정도 떨어지게 설정 */
+    width: auto;
+    z-index: 999; /* 다른 콘텐츠 위에 올라오도록 설정 */
+}
+
+/* 네비게이션 바 링크 스타일 */
+.navbar-nav .nav-link {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+/* 밝은 모드에서 네비게이션 바 텍스트 색상 (검정색) */
+body:not(.dark-mode) .navbar-nav .nav-link {
+    color: black;  /* 밝은 모드에서 텍스트 색상 검정 */
+}
+
+/* 어두운 모드에서 네비게이션 바 텍스트 색상 (흰색) */
+body.dark-mode .navbar-nav .nav-link {
+    color: #f4f4f4;  /* 어두운 모드에서 텍스트 색상 흰색 */
+}
+
+/* 밝은 모드에서 네비게이션 바 링크 호버 효과 */
+body:not(.dark-mode) .navbar-nav .nav-link:hover {
+    color: #ff6600;  /* 호버 시 오렌지 색상 */
+}
+
+/* 어두운 모드에서 네비게이션 바 링크 호버 효과 */
+body.dark-mode .navbar-nav .nav-link:hover {
+    color: #ff6600;  /* 호버 시 오렌지 색상 */
+}
+
+/* 네비게이션 바 스타일 */
+.navbar-nav {
+    display: flex;
+    flex-direction: column;  /* 세로로 정렬 */
+    align-items: flex-end;  /* 오른쪽 끝으로 정렬 */
+}
+
+/* 푸터 텍스트 스타일 */
+.footer {
+    background-color: #f4f4f4;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+/* 푸터의 저작권 텍스트 스타일 */
+.footer-text {
+    position: fixed;  /* 절대 위치로 설정 */
+    bottom: 20px;  /* 페이지 하단에서 20px 만큼 떨어지게 설정 */
+    right: 20px;  /* 페이지 오른쪽에서 20px 만큼 떨어지게 설정 */
+    font-size: 14px;  /* 텍스트 크기를 조정 */
+    color: black;  /* 기본 텍스트 색상 (밝은 모드에서 검정색) */
+    z-index: 9999; /* 다른 요소들 위에 위치 */
+}
+
+/* 어두운 모드에서 텍스트 색상 흰색으로 변경 */
+body.dark-mode .footer-text {
+    color: white;  /* 어두운 모드에서 텍스트 색상 흰색 */
+}
+
+/* 인스타그램 아이콘 스타일 */
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* 아이콘과 텍스트 사이 간격 */
+}
+
+.social-icon i {
+    font-size: 3.5rem;
+    color: black;  /* 아이콘 색상 */
+    margin-right: 5px;
+}
+
+.social-icon:hover i {
+    color: #e4405f;  /* 인스타그램 색상으로 호버 시 색상 변경 */
+}
+
+/* 링크 스타일 */
+footer a {
+    color: #fff;  /* 기본 링크 색상 */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;  /* 호버 시 밑줄 효과 */
+}
+
+/* 고양이 아이콘 호버 효과 */
+.mode-toggle:hover {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* About 섹션의 p5.js 캔버스 스타일 */
+#p5sketch {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center;     /* 수직 중앙 정렬 */
+    height: 400px;           /* 캔버스 높이 */
+    width: 100%;             /* 캔버스 넓이 */
+    margin-top: 20px;
+}
+
+/* 어두운 모드 스타일 */
+body.dark-mode {
+    background-color: black;  /* 어두운 모드일 때 배경색 검정색 */
+    color: #fff;  /* 어두운 모드에서 글자 색상 밝은 색 */
+}
+
+/* 어두운 모드에서 섹션 배경 및 텍스트 색상 */
+body.dark-mode .section {
+    background-color: black;  /* 어두운 모드 배경색 */
+    color: #fff;  /* 텍스트 색상 흰색 */
+}
+
+/* 어두운 모드에서 제목 색상 */
+body.dark-mode .section-title {
+    color: #fff;  /* 제목 색상 흰색 */
+}
+
+/* 어두운 모드에서 링크 색상 */
+body.dark-mode .navbar-nav .nav-link {
+    color: #fff;  /* 링크 텍스트 흰색 */
+}
+
+/* 어두운 모드에서 푸터 색상 */
+body.dark-mode .footer {
+    background-color: black;
+    color: white;
+}
+
+/* 어두운 모드에서 인스타그램 아이콘 색상 */
+body.dark-mode .social-icon i {
+    color: #fff;  /* 아이콘 색상 흰색 */
+}
+
+/* 어두운 모드에서 아이콘 호버 색상 */
+body.dark-mode .social-icon:hover i {
+    color: #ff6600;  /* 인스타그램 색상으로 호버 시 색상 변경 */
+}
+
+/* 밝은 모드에서 아이콘 호버 색상 */
+body:not(.dark-mode) .social-icon:hover i {
+    color: #ff6600;  /* 인스타그램 색상 (밝은 모드에서) */
+}
+
+/* 기본 스타일 */
+.mode-toggle {
+    position: fixed;
+    bottom: 20px;  /* 화면 하단 20px */
+    left: 20px;  /* 화면 왼쪽 20px */
+    padding: 0;  /* 패딩 제거 */
+    cursor: pointer;  /* 클릭 가능하게 커서 설정 */
+    z-index: 9999;  /* 다른 요소들 위에 위치 */
+}
+
+/* 고양이 아이콘 색상 */
+.mode-toggle i {
+    font-size: 2rem;  /* 아이콘 크기 */
+    color: black;  /* 기본 아이콘 색상 (어두운 회색) */
+}
+
+/* 어두운 모드에서 고양이 아이콘 색상 변경 */
+body.dark-mode .mode-toggle i {
+    color: #fff;  /* 어두운 모드일 때 고양이 아이콘 색상 흰색 */
+}
+
+/* 어두운 모드에서 고양이 아이콘에 마우스를 올렸을 때 */
+body.dark-mode .mode-toggle:hover {
+    background-color: transparent; /* 호버 시 배경색 없음 */
+    box-shadow: none;  /* 호버 시 그림자 제거 */
+}
+
+/* 고양이 아이콘 호버 효과 */
+.mode-toggle:hover {
+    background-color: transparent;  /* 배경색 없음 */
+    box-shadow: none;  /* 그림자 제거 */
+}
+
+
+/* 갤러리 이미지 스타일 */
+.gallery-image {
+    display: flex;
+    justify-content: center;  /* 수평 중앙 정렬 */
+    align-items: center;      /* 수직 중앙 정렬 */
+    margin-top: 40px;         /* 상단 여백을 더 추가 */
+}
+
+.gallery-image img {
+    width: 350px;  /* 이미지 크기 조정 */
+    height: 350px; /* 이미지 세로 크기 */
+    object-fit: cover;  /* 이미지 비율 유지하면서 영역을 채우기 */
+    border-radius: 10px; /* 이미지 모서리 둥글게 */
+}
